@@ -4,14 +4,16 @@ using CardinalDeadStockWebApi.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CardinalDeadStockWebApi.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190222021233_dbm001")]
+    partial class dbm001
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,34 +37,6 @@ namespace CardinalDeadStockWebApi.Data.Migrations
                     b.HasKey("DesiredShoeId");
 
                     b.ToTable("DesiredShoes");
-                });
-
-            modelBuilder.Entity("CardinalDeadStockWebApi.Data.ApplicationDb.ShippingProfile", b =>
-                {
-                    b.Property<Guid>("ShippingProfileId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Address1");
-
-                    b.Property<string>("Address2");
-
-                    b.Property<string>("City");
-
-                    b.Property<string>("Description");
-
-                    b.Property<string>("FirstName");
-
-                    b.Property<string>("LastName");
-
-                    b.Property<string>("PhoneNumber");
-
-                    b.Property<string>("State");
-
-                    b.Property<string>("ZipCode");
-
-                    b.HasKey("ShippingProfileId");
-
-                    b.ToTable("ShippingProfiles");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
