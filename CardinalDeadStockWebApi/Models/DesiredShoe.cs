@@ -8,6 +8,7 @@ namespace CardinalDeadStockWebApi.Models
     public class DesiredShoe
     {
         public Guid DesiredShoeId { get; set; }
+        public string OwnerID { get; set; }        // user ID from AspNetUser table.
         public string Description { get; set; }
         public string URL { get; set; }
         public DateTime ReleaseDate { get; set; }
