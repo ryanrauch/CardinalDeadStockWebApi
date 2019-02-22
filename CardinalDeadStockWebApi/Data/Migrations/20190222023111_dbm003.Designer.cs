@@ -4,14 +4,16 @@ using CardinalDeadStockWebApi.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CardinalDeadStockWebApi.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190222023111_dbm003")]
+    partial class dbm003
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,15 +26,11 @@ namespace CardinalDeadStockWebApi.Data.Migrations
                     b.Property<Guid>("ApplicationUserDesiredShoesId")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("ApplicationUserId");
+
                     b.Property<Guid>("DesiredShoeId");
 
-                    b.Property<string>("IdentityUserId");
-
                     b.HasKey("ApplicationUserDesiredShoesId");
-
-                    b.HasIndex("DesiredShoeId");
-
-                    b.HasIndex("IdentityUserId");
 
                     b.ToTable("ApplicationUserDesiredShoes");
                 });
@@ -246,18 +244,6 @@ namespace CardinalDeadStockWebApi.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("CardinalDeadStockWebApi.Models.ApplicationUserDesiredShoe", b =>
-                {
-                    b.HasOne("CardinalDeadStockWebApi.Models.DesiredShoe", "DesiredShoe")
-                        .WithMany()
-                        .HasForeignKey("DesiredShoeId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
-                        .WithMany()
-                        .HasForeignKey("IdentityUserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
